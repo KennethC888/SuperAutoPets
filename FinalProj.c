@@ -773,6 +773,7 @@ void Rematch (struct Pet_Array *pa, struct Pet_Lineup *pl)
 
 void Choose_Pet(struct Pet_Array *pa, struct Pet_Lineup *pl)
 {
+	
 	int total_coins = 20; 
 	pl->numPets = 0; //Start at 0, works for future battles
 	int r1 = 1000;
@@ -800,18 +801,20 @@ void Choose_Pet(struct Pet_Array *pa, struct Pet_Lineup *pl)
 			r3 = rand()%(pa ->numPets - 5);
 		}
 	
-		printf("%s%s%s%s%s\n",pa->pets[r1].sprite, "\t", pa->pets[r2].sprite, "\t", pa->pets[r3].sprite); 	
+		printf("\n%s%s%s%s%s\n",pa->pets[r1].sprite, "\t", pa->pets[r2].sprite, "\t", pa->pets[r3].sprite); 	
 		printf("%s%d%s%d%s%d\n","🪙",pa->pets[r1].cost, "\t🪙",pa->pets[r2].cost, "\t🪙", pa->pets[r3].cost);
 		scanf("%d", &input); //Get user input
+		printf("\n");
 
 		while (input != 1 && input != 2 && input != 3 && input != 4)
 		{
 			printf("Select a pet! Press 1 for the first pet, 2 for the second, and 3 for the third!\n");
 			printf("Or pay a coin by pressing 4 for a reroll!\n\n");
 			printf("%s%d\n","Total Coins: 🪙", total_coins);
-			printf("%s%s%s%s%s\n",pa->pets[r1].sprite, "\t", pa->pets[r2].sprite, "\t", pa->pets[r3].sprite); 	
+			printf("\n%s%s%s%s%s\n",pa->pets[r1].sprite, "\t", pa->pets[r2].sprite, "\t", pa->pets[r3].sprite); 	
 			printf("%s%d%s%d%s%d\n","🪙",pa->pets[r1].cost, "\t🪙",pa->pets[r2].cost, "\t🪙", pa->pets[r3].cost);
 			scanf("%d", &input); //Get user input
+			printf("\n");
 		}
 
 		while (input == 1 && total_coins < pa->pets[r1].cost)
@@ -823,6 +826,7 @@ void Choose_Pet(struct Pet_Array *pa, struct Pet_Lineup *pl)
 			printf("%s%s%s%s%s\n",pa->pets[r1].sprite, "\t", pa->pets[r2].sprite, "\t", pa->pets[r3].sprite); 	
 			printf("%s%d%s%d%s%d\n","🪙",pa->pets[r1].cost, "\t🪙",pa->pets[r2].cost, "\t🪙", pa->pets[r3].cost);
 			scanf("%d", &input); //Get user input
+			printf("\n");
 		}
 
 		while (input == 2 && total_coins < pa->pets[r2].cost)
@@ -834,6 +838,7 @@ void Choose_Pet(struct Pet_Array *pa, struct Pet_Lineup *pl)
 			printf("%s%s%s%s%s\n",pa->pets[r1].sprite, "\t", pa->pets[r2].sprite, "\t", pa->pets[r3].sprite); 	
 			printf("%s%d%s%d%s%d\n","🪙",pa->pets[r1].cost, "\t🪙",pa->pets[r2].cost, "\t🪙", pa->pets[r3].cost);
 			scanf("%d", &input); //Get user input
+			printf("\n");
 		}
 
 		while (input == 3 && total_coins < pa->pets[r3].cost)
@@ -845,6 +850,7 @@ void Choose_Pet(struct Pet_Array *pa, struct Pet_Lineup *pl)
 			printf("%s%s%s%s%s\n",pa->pets[r1].sprite, "\t", pa->pets[r2].sprite, "\t", pa->pets[r3].sprite); 	
 			printf("%s%d%s%d%s%d\n","🪙",pa->pets[r1].cost, "\t🪙",pa->pets[r2].cost, "\t🪙", pa->pets[r3].cost);
 			scanf("%d", &input); //Get user input
+			printf("\n"); 
 		}
 
 		if (input == 1)
@@ -911,6 +917,7 @@ void Choose_Pet(struct Pet_Array *pa, struct Pet_Lineup *pl)
 			printf("%s%s%s%s%s\n",pa->pets[r1].sprite, "\t", pa->pets[r2].sprite, "\t", pa->pets[r3].sprite); 	
 			printf("%s%d%s%d%s%d\n","🪙",pa->pets[r1].cost, "\t🪙",pa->pets[r2].cost, "\t🪙", pa->pets[r3].cost);
 			scanf("%d", &input); //Get user input
+			printf("\n");
 
 			while (input != 1 && input != 2 && input != 3 && input != 4)
 			{
@@ -920,9 +927,10 @@ void Choose_Pet(struct Pet_Array *pa, struct Pet_Lineup *pl)
 				printf("%s%s%s%s%s\n",pa->pets[r1].sprite, "\t", pa->pets[r2].sprite, "\t", pa->pets[r3].sprite); 	
 				printf("%s%d%s%d%s%d\n","🪙",pa->pets[r1].cost, "\t🪙",pa->pets[r2].cost, "\t🪙", pa->pets[r3].cost);
 				scanf("%d", &input); //Get user input
+				printf("\n");
 			}
 
-			while (input == 1 && total_coins < pa->pets[r1].cost)
+			while ((input == 1 && total_coins < pa->pets[r1].cost) || (input == 2 && total_coins <pa->pets[r2].cost) || (input == 3 && total_coins < pa-> pets[r3].cost))
 			{
 				printf("Not enough coins!\n");
 				printf("Select a pet! Press 1 for the first pet, 2 for the second, and 3 for the third!\n");
@@ -931,28 +939,7 @@ void Choose_Pet(struct Pet_Array *pa, struct Pet_Lineup *pl)
 				printf("%s%s%s%s%s\n",pa->pets[r1].sprite, "\t", pa->pets[r2].sprite, "\t", pa->pets[r3].sprite); 	
 				printf("%s%d%s%d%s%d\n","🪙",pa->pets[r1].cost, "\t🪙",pa->pets[r2].cost, "\t🪙", pa->pets[r3].cost);
 				scanf("%d", &input); //Get user input
-			}
-
-			while (input == 2 && total_coins < pa->pets[r2].cost)
-			{
-				printf("Not enough coins!\n");
-				printf("Select a pet! Press 1 for the first pet, 2 for the second, and 3 for the third!\n");
-				printf("Or pay a coin by pressing 4 for a reroll!\n\n");
-				printf("%s%d\n","Total Coins: 🪙", total_coins);
-				printf("%s%s%s%s%s\n",pa->pets[r1].sprite, "\t", pa->pets[r2].sprite, "\t", pa->pets[r3].sprite); 	
-				printf("%s%d%s%d%s%d\n","🪙",pa->pets[r1].cost, "\t🪙",pa->pets[r2].cost, "\t🪙", pa->pets[r3].cost);
-				scanf("%d", &input); //Get user input
-			}
-
-			while (input == 3 && total_coins < pa->pets[r3].cost)
-			{
-				printf("Not enough coins!\n");
-				printf("Select a pet! Press 1 for the first pet, 2 for the second, and 3 for the third!\n");
-				printf("Or pay a coin by pressing 4 for a reroll!\n\n");
-				printf("%s%d\n","Total Coins: 🪙", total_coins);
-				printf("%s%s%s%s%s\n",pa->pets[r1].sprite, "\t", pa->pets[r2].sprite, "\t", pa->pets[r3].sprite); 	
-				printf("%s%d%s%d%s%d\n","🪙",pa->pets[r1].cost, "\t🪙",pa->pets[r2].cost, "\t🪙", pa->pets[r3].cost);
-				scanf("%d", &input); //Get user input
+				printf("\n");
 			}
 
 			if (input == 1)
