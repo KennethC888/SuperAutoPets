@@ -2,7 +2,6 @@
 #include <string.h>
 #include <time.h>
 #include <stdlib.h>
-//🪙
 
 // Initializing Pet, Pet_Array struct, and Pet_Lineup structs
 struct Pet 
@@ -171,7 +170,7 @@ void Lore7()
 {
 	system("clear");
 	printf("Congratulations!\n");
-	printf("You avenged your freinds in section C.\n");
+	printf("You avenged your friends in section C.\n");
 }
 
 void print_Battle (struct Pet_Array *pa, struct Pet_Lineup *pl, int boss_loc)
@@ -705,8 +704,8 @@ void Rematch (struct Pet_Array *pa, struct Pet_Lineup *pl)
 			j = 10000;  
 		}
 	}
- 
-	pa->pets[boss_loc].health = 25; 
+	
+	pa->pets[boss_loc].health = 50; 
 	print_Battle(pa, pl, boss_loc); 
 	printf("\nCommence the battle!\n");
 	next = getchar();
@@ -1056,6 +1055,7 @@ int main()
 	Choose_Pet(&select, &lineup);
 	Battle5(&select, &lineup); //User fights fifth boss Finchev
 	Lore6(&select); 
+	buff_Pets(&select);
 	Choose_Pet(&select, &lineup);
 	Rematch(&select, &lineup);
 	Lore7();
