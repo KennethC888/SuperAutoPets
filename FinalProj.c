@@ -2,6 +2,7 @@
 #include <string.h>
 #include <time.h>
 #include <stdlib.h>
+#include <stdbool.h>
 
 // Initializing Pet, Pet_Array struct, and Pet_Lineup structs
 struct Pet 
@@ -785,7 +786,7 @@ void prompt (int total_coins)
 
 void Choose_Pet(struct Pet_Array *pa, struct Pet_Lineup *pl)
 {
-	
+	bool Too_poor = false; 
 	int total_coins = 20; 
 	pl->numPets = 0; //Start at 0, works for future battles
 	int r1 = 1000;
@@ -887,11 +888,12 @@ void Choose_Pet(struct Pet_Array *pa, struct Pet_Lineup *pl)
 			pl->numPets ++;
 		}
 
-		while (input == 4)
+		while (input == 4 && total_coins > 0) //Reroll 
 		{
 			if (total_coins <= 0)
 			{
-				i = 100; 
+				Too_poor = true;
+				break; 
 			}
 
 			total_coins = total_coins - 1; 
