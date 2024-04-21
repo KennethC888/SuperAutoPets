@@ -33,13 +33,6 @@ struct Dinh_Army
 	struct Pet Pig_Army[5];
 };
 
-//struct Player_info
-//{
-//	char* player_name;
-//	int gold;
-//	int win;
-//	int loss;
-//};
 
 //Method to add pet to be added to the pet_array
 void add_Pet(struct Pet_Array *ps, struct Pet p)
@@ -73,7 +66,7 @@ void Lore1()
 	printf("Rules:\n");
 	printf("1.Before each battle, you will select pets into a team of three pets to fight an enemy boss.\n"); 
 	printf("2.Press a number (1,2,3) to select a pet for your team \n");
-	printf("3.Press enter to continue the storyline and each turn in the battles.");
+	printf("3.Press enter to continue the storyline and each turn in the battles.\n");
 	x = getchar();
 	system("clear");
 	printf("Summer of 2023: It was a good day in the open land. You were enjoying a day with your pets at your farm.\n");	
@@ -81,12 +74,12 @@ void Lore1()
 	printf("The trees would sway as if in a slow trance, keeping you calm and happy all day as you spent time with your pets.\n");
 	x = getchar(); // Used as a way for the user to press enter to continue reading the lore without it all showing up at once
 	printf("But the worst has yet to come: you did not experience a semester of Cooper Union yet.\n");
-	printf("For the unlucky individuals who were enrolled into section C, they were about to face the worst few months of their lives.\n");
+	printf("For the unlucky students who were enrolled into section C, they were about to face the worst few months of their lives.\n");
 	x = getchar();
-	printf("This game is dedicated to the survivors of section C, those poor minds and hearts broken by the Holy Trinity...\n");
+	printf("This game is dedicated to the survivors of section C, those poor minds and hearts broken by the 'Holy Trinity'...\n");
         printf("The Holy Trinity is composed of Ohm Aggy-Poo, Robin SaRIZZky, and Finchev.\n");
 	x = getchar();
-        printf("These three individuals, dubbed the 'Holy Trinity', were known for their rigorous homework assignments and exams.\n");
+        printf("These people were known for their rigorous homework assignments and exams.\n");
 	printf("Many have fallen victim to the Holy Trinity.\n"); 
 	x = getchar(); 
 	printf("And now, it is time to unite with your pets and defeat the Holy Trinity to avenge your friends!\n");
@@ -179,6 +172,13 @@ void print_Battle (struct Pet_Array *pa, struct Pet_Lineup *pl, int boss_loc)
 	char next; 
 	for (int i = 0; i < 3; i++)
 	{
+		for (int k = 0; k < 3; k++)
+		{
+			if (pl->squad[k].health == 0)
+			{
+				pl->squad[k].sprite = "💀"; 
+			}
+		}	
 		printf("%s\t\t", pl->squad[i].sprite); //Prints the sprites of the selected pets
 	}
 	
@@ -229,6 +229,20 @@ void Battle1 (struct Pet_Array *pa, struct Pet_Lineup *pl)
 
 	while (battle != 0)
 	{
+		while (pl->squad[fighter_pos].health <= 0) //Pet Defeat condition
+		{
+			fighter_pos = fighter_pos - 1; // The next pet to the left of the dead pet is the next fighter
+
+			if (fighter_pos == -1) //If all pets are dead, you lose the battle
+			{
+				printf("\nYOU LOSE!\n");
+				print_Battle(pa, pl, boss_loc);
+				battle = 0;
+				exit(0); //exits the program
+				
+			}
+		}
+
 		pa->pets[boss_loc].health = pa->pets[boss_loc].health - pl->squad[fighter_pos].strength; //Pet goes first and deals damage to opponent
 		//Displays how much damage the pet did to the enemy
 		//The print statments are split into two lines for visual appeal when reviewing code
@@ -318,6 +332,46 @@ void Battle2(struct Pet_Array *pa, struct Pet_Lineup *pl, struct Dinh_Army *da)
 
 	while (battle != 0)
 	{
+		while (pl->squad[fighter_pos].health <= 0) //Pet Defeat condition
+		{
+			fighter_pos = fighter_pos - 1; // The next pet to the left of the dead pet is the next fighter
+
+			if (fighter_pos == -1) //If all pets are dead, you lose the battle
+			{
+				printf("YOU LOSE!\n");
+		for (int i = 0; i < 3; i++)
+		{
+			printf("%s\t\t", pl->squad[i].sprite); //Prints the sprites of the selected pets
+		}
+		
+		printf("|");
+	
+		for (int i = 0; i < 5; i++)
+		{
+			printf("%s\t", da->Pig_Army[i].sprite); //pig sprite
+		}
+		
+		printf("\n");
+
+		for (int i = 0; i < 3; i++)
+		{
+			printf("❤️ %d", pl->squad[i].health); //Displays health of the pet in user's army
+			printf(" 🗡️%d", pl->squad[i].strength); //Displays strength of the pet in user's army
+			printf("\t");
+		}
+
+		for (int i = 0; i < 5; i++)
+		{
+			printf("❤ %d", da->Pig_Army[i].health); //Displays Pig's health
+			printf(" 🗡️%d",da->Pig_Army[i].strength); //Displays Pig's strength
+			printf("\t");
+		}
+				printf("\n");
+				battle = 0;
+				exit(0);
+			}
+		}
+
 		da->Pig_Army[enemy_pos].health = da->Pig_Army[enemy_pos].health - pl->squad[fighter_pos].strength; //Pet attacks first
 		//Displays how much damage the pet did to the enemy
 		//The print statments are split into two lines for visual appeal when reviewing code
@@ -447,6 +501,20 @@ void Battle3 (struct Pet_Array *pa, struct Pet_Lineup *pl)
 
 	while (battle != 0)
 	{
+		while (pl->squad[fighter_pos].health <= 0) //Pet Defeat condition
+		{
+			fighter_pos = fighter_pos - 1; // The next pet to the left of the dead pet is the next fighter
+
+			if (fighter_pos == -1) //If all pets are dead, you lose the battle
+			{
+				printf("\nYOU LOSE!\n");
+				print_Battle(pa, pl, boss_loc);
+				battle = 0;
+				exit(0); //exits the program
+				
+			}
+		}
+
 		pa->pets[boss_loc].health = pa->pets[boss_loc].health - pl->squad[fighter_pos].strength; //Pet goes first and deals damage to opponent
 		//Displays how much damage the pet did to the enemy
 		//The print statments are split into two lines for visual appeal when reviewing code
@@ -523,6 +591,19 @@ void Battle4 (struct Pet_Array *pa, struct Pet_Lineup *pl)
 
 	while (battle != 0)
 	{
+		while (pl->squad[fighter_pos].health <= 0) //Pet Defeat condition
+		{
+			fighter_pos = fighter_pos - 1; // The next pet to the left of the dead pet is the next fighter
+
+			if (fighter_pos == -1) //If all pets are dead, you lose the battle
+			{
+				printf("\nYOU LOSE!\n");
+				print_Battle(pa, pl, boss_loc);
+				battle = 0;
+				exit(0); //exits the program
+			}
+		}
+
 		pa->pets[boss_loc].health = pa->pets[boss_loc].health - pl->squad[fighter_pos].strength; //Pet goes first and deals damage to opponent
 		//Displays how much damage the pet did to the enemy
 		//The print statments are split into two lines for visual appeal when reviewing code
@@ -634,6 +715,19 @@ void Battle5 (struct Pet_Array *pa, struct Pet_Lineup *pl)
 	
 	while (battle != 0)
 	{
+		while (pl->squad[fighter_pos].health <= 0) //Pet Defeat condition
+		{
+			fighter_pos = fighter_pos - 1; // The next pet to the left of the dead pet is the next fighter
+
+			if (fighter_pos == -1) //If all pets are dead, you lose the battle
+			{
+				printf("\nYOU LOSE!\n");
+				print_Battle(pa, pl, boss_loc);
+				battle = 0;
+				exit(0); //exits the program
+			}
+		}
+
 		pa->pets[boss_loc].health = pa->pets[boss_loc].health - pl->squad[fighter_pos].strength; //Pet goes first and deals damage to opponent
 		//Displays how much damage the pet did to the enemy
 		//The print statments are split into two lines for visual appeal when reviewing code
@@ -713,6 +807,20 @@ void Rematch (struct Pet_Array *pa, struct Pet_Lineup *pl)
 	
 	while (battle != 0)
 	{
+		while (pl->squad[fighter_pos].health <= 0) //Pet Defeat condition
+		{
+			fighter_pos = fighter_pos - 1; // The next pet to the left of the dead pet is the next fighter
+
+			if (fighter_pos == -1) //If all pets are dead, you lose the battle
+			{
+				printf("\nYOU LOSE!\n");
+				print_Battle(pa, pl, boss_loc);
+				battle = 0;
+				exit(0); //exits the program
+				
+			}
+		}
+
 		pa->pets[boss_loc].health = pa->pets[boss_loc].health - pl->squad[fighter_pos].strength; //Pet goes first and deals damage to opponent
 		//Displays how much damage the pet did to the enemy
 		//The print statments are split into two lines for visual appeal when reviewing code
@@ -736,7 +844,7 @@ void Rematch (struct Pet_Array *pa, struct Pet_Lineup *pl)
 			condescend(); 
 			printf("%s", "This attack deals an additional 10 damage to ");
             printf("%s%s\n", pl->squad[fighter_pos].pet_name, " and heals Finchev 2 health!");
-			printf("%s\n", "But with MENTAL FORTITUDE, this attack deals 0 damage!");
+			printf("%s\n", "But with MENTAL FORTITUDE, Condescend deals 0 damage!");
 		} 
 
 		else
@@ -797,6 +905,10 @@ void Choose_Pet(struct Pet_Array *pa, struct Pet_Lineup *pl)
 
 	for (int i = 0; i < 3; i++)
 	{
+		if (total_coins <= 0)
+		{
+			break;
+		}
 		prompt(total_coins);
 		r1 = rand()%(pa->numPets - 5);
 		r2 = rand()%(pa->numPets - 5);
@@ -890,13 +1002,14 @@ void Choose_Pet(struct Pet_Array *pa, struct Pet_Lineup *pl)
 
 		while (input == 4 && total_coins > 0) //Reroll 
 		{
+			total_coins = total_coins - 1; 
+
 			if (total_coins <= 0)
 			{
 				Too_poor = true;
 				break; 
 			}
 
-			total_coins = total_coins - 1; 
 			prompt(total_coins);
 			r1 = rand()%(pa->numPets - 5); //Picks a random number between 0 and 13
 			r2 = rand()%(pa->numPets - 5);
