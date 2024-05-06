@@ -739,6 +739,7 @@ void Rematch (struct Pet_Array *pa, struct Pet_Lineup *pl)
 			printf("%s", "This attack deals an additional 10 damage to ");
             printf("%s%s\n", pl->squad[fighter_pos].pet_name, " and heals Finchev 2 health!");
 			printf("%s\n", "But with MENTAL FORTITUDE, Condescend deals 0 damage!");
+		    printf("%s%d%s\n", "This attack dealt ", pa->pets[boss_loc].strength, " damage");
 		} 
 
 		else
