@@ -812,7 +812,7 @@ void Choose_Pet(struct Pet_Array *pa, struct Pet_Lineup *pl)
 			scanf("%c", &input); //Get user input
 		}
 	
-		while (input == '1' && total_coins < pa->pets[r1].cost)
+		while (input == '1' && (total_coins < pa->pets[r1].cost))
 		{
 			printf("Not enough coins!\n");
 			prompt(total_coins);
@@ -821,7 +821,7 @@ void Choose_Pet(struct Pet_Array *pa, struct Pet_Lineup *pl)
 			printf("\n");
 		}
 
-		while (input == '2' && total_coins < pa->pets[r2].cost)
+		while (input == '2' && (total_coins < pa->pets[r2].cost))
 		{
 			printf("Not enough coins!\n");
 			prompt(total_coins);
@@ -830,7 +830,7 @@ void Choose_Pet(struct Pet_Array *pa, struct Pet_Lineup *pl)
 			printf("\n");
 		}
 
-		while (input == '3' && total_coins < pa->pets[r3].cost)
+		while (input == '3' && (total_coins < pa->pets[r3].cost))
 		{
 			printf("Not enough coins!\n");
 			prompt(total_coins);
@@ -898,7 +898,7 @@ void Choose_Pet(struct Pet_Array *pa, struct Pet_Lineup *pl)
 				scanf("%s", &input); //Get user input
 			}
 
-			while ((input == '1' && total_coins < pa->pets[r1].cost) || (input == '2' && total_coins <pa->pets[r2].cost) || (input == '3' && total_coins < pa-> pets[r3].cost))
+			while ((input == '1' && (total_coins < pa->pets[r1].cost)) || (input == '2' && (total_coins <pa->pets[r2].cost)) || (input == '3' && (total_coins < pa-> pets[r3].cost)))
 			{
 				printf("Not enough coins!\n");
 				prompt(total_coins);
