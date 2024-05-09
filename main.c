@@ -900,6 +900,10 @@ void Choose_Pet(struct Pet_Array *pa, struct Pet_Lineup *pl)
 				prompt(total_coins);
 				print_Selection(pa, r1, r2, r3);
 				scanf("%s", &input); //Get user input
+				while (input != '1' && input != '2' && input != '3' && input != '4')
+				{
+					scanf("%s", &input); //Get user input
+				}
 				printf("\n");
 			}
 
