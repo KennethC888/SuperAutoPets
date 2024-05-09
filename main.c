@@ -131,8 +131,8 @@ void Battle1 (struct Pet_Array *pa, struct Pet_Lineup *pl)
 		pa->pets[boss_loc].health = pa->pets[boss_loc].health - pl->squad[fighter_pos].strength; //Pet goes first and deals damage to opponent
 		//Displays how much damage the pet did to the enemy
 		//The print statments are split into two lines for visual appeal when reviewing code
-		printf("\n%s%s", pl->squad[fighter_pos].pet_name," has dealt ");
-		printf("%d%s%s\n", pl->squad[fighter_pos].strength, " damage to ", pa->pets[boss_loc].pet_name);
+		printf("\n%s has dealt ", pl->squad[fighter_pos].pet_name);
+		printf("%d damage to %s\n", pl->squad[fighter_pos].strength, pa->pets[boss_loc].pet_name);
 		
 		if (pa->pets[boss_loc].health <= 0) //Win condition
 		{
@@ -148,8 +148,8 @@ void Battle1 (struct Pet_Array *pa, struct Pet_Lineup *pl)
 			pl->squad[fighter_pos].health = pl->squad[fighter_pos].health - pa->pets[boss_loc].strength; //Enemy deals damage to pet
 			//Displays how much damage the pet did to the enemy
                 	//The print statments are split into two lines for visual appeal when reviewing code
-                	printf("%s%s", pa->pets[boss_loc].pet_name," has dealt ");
-                	printf("%d%s%s\n", pa->pets[boss_loc].strength, " damage to ", pl->squad[fighter_pos].pet_name);
+                	printf("%s has dealt ", pa->pets[boss_loc].pet_name);
+                	printf("%d damage to %s\n", pa->pets[boss_loc].strength, pl->squad[fighter_pos].pet_name);
 		}
 		
 		if (pl->squad[fighter_pos].health <= 0) //Pet Defeat condition
@@ -260,8 +260,8 @@ void Battle2(struct Pet_Array *pa, struct Pet_Lineup *pl, struct Dinh_Army *da)
 		da->Pig_Army[enemy_pos].health = da->Pig_Army[enemy_pos].health - pl->squad[fighter_pos].strength; //Pet attacks first
 		//Displays how much damage the pet did to the enemy
 		//The print statments are split into two lines for visual appeal when reviewing code
-		printf("\n%s%s", pl->squad[fighter_pos].pet_name," has dealt ");
-		printf("%d%s%s\n", pl->squad[fighter_pos].strength, " damage to ",da->Pig_Army[enemy_pos].pet_name); // "Pig");
+		printf("\n%s has dealt ", pl->squad[fighter_pos].pet_name);
+		printf("%d damage to %s\n", pl->squad[fighter_pos].strength, da->Pig_Army[enemy_pos].pet_name); // "Pig");
 		
 		if (da->Pig_Army[enemy_pos].health <= 0) //Pig Defeat condition
 		{
@@ -282,8 +282,8 @@ void Battle2(struct Pet_Array *pa, struct Pet_Lineup *pl, struct Dinh_Army *da)
 			pl->squad[fighter_pos].health = pl->squad[fighter_pos].health - da->Pig_Army[enemy_pos].strength; //Enemy deals damage to pet
 			//Displays how much damage the pet did to the enemy
 	        	//The print statments are split into two lines for visual appeal when reviewing code
-       	 		printf("%s%s", da->Pig_Army[enemy_pos].pet_name," has dealt ");
-        		printf("%d%s%s\n\n", da->Pig_Army[enemy_pos].strength, " damage to ", pl->squad[fighter_pos].pet_name);
+       	 		printf("%s has dealt ", da->Pig_Army[enemy_pos].pet_name);
+        		printf("%d damage to %s\n\n", da->Pig_Army[enemy_pos].strength, pl->squad[fighter_pos].pet_name);
 		}
 		
 		if (pl->squad[fighter_pos].health <= 0) //Pet Defeat condition
@@ -403,8 +403,8 @@ void Battle3 (struct Pet_Array *pa, struct Pet_Lineup *pl)
 		pa->pets[boss_loc].health = pa->pets[boss_loc].health - pl->squad[fighter_pos].strength; //Pet goes first and deals damage to opponent
 		//Displays how much damage the pet did to the enemy
 		//The print statments are split into two lines for visual appeal when reviewing code
-		printf("\n%s%s", pl->squad[fighter_pos].pet_name," has dealt ");
-		printf("%d%s%s\n", pl->squad[fighter_pos].strength, " damage to ", pa->pets[boss_loc].pet_name);
+		printf("\n%s has dealt ", pl->squad[fighter_pos].pet_name);
+		printf("%d damage to %s\n", pl->squad[fighter_pos].strength, pa->pets[boss_loc].pet_name);
 		
 		if (pa->pets[boss_loc].health <= 0) //Win condition
 		{
@@ -419,7 +419,7 @@ void Battle3 (struct Pet_Array *pa, struct Pet_Lineup *pl)
 		{
 			pl->squad[fighter_pos].health = pl->squad[fighter_pos].health - pl->squad[fighter_pos].strength;
 			printf("%s\n", "Ohm Aggy-Poo used 'What you mean is'!"); 
-			printf("%s%d%s%s\n", "This attack deals ", pl->squad[fighter_pos].strength, " damage to ",pl->squad[fighter_pos].pet_name);	
+			printf("This attack deals%ddamage to%s\n", pl->squad[fighter_pos].strength, pl->squad[fighter_pos].pet_name);	
 		} 
 
 		else
@@ -427,8 +427,8 @@ void Battle3 (struct Pet_Array *pa, struct Pet_Lineup *pl)
 			pl->squad[fighter_pos].health = pl->squad[fighter_pos].health - pa->pets[boss_loc].strength; //Enemy deals damage to pet
 			//Displays how much damage the pet did to the enemy
                 	//The print statments are split into two lines for visual appeal when reviewing code
-                	printf("%s%s", pa->pets[boss_loc].pet_name," has dealt ");
-                	printf("%d%s%s\n", pa->pets[boss_loc].strength, " damage to ", pl->squad[fighter_pos].pet_name);
+                	printf("%s has dealt ", pa->pets[boss_loc].pet_name);
+                	printf("%d damage to %s\n", pa->pets[boss_loc].strength, pl->squad[fighter_pos].pet_name);
 		}
 		
 		if (pl->squad[fighter_pos].health <= 0) //Pet Defeat condition
@@ -492,8 +492,8 @@ void Battle4 (struct Pet_Array *pa, struct Pet_Lineup *pl)
 		pa->pets[boss_loc].health = pa->pets[boss_loc].health - pl->squad[fighter_pos].strength; //Pet goes first and deals damage to opponent
 		//Displays how much damage the pet did to the enemy
 		//The print statments are split into two lines for visual appeal when reviewing code
-		printf("\n%s%s", pl->squad[fighter_pos].pet_name," has dealt ");
-		printf("%d%s%s\n", pl->squad[fighter_pos].strength, " damage to ", pa->pets[boss_loc].pet_name);
+		printf("\n%s has dealt ", pl->squad[fighter_pos].pet_name);
+		printf("%d damage to %s\n", pl->squad[fighter_pos].strength, pa->pets[boss_loc].pet_name);
 		
 		if (pa->pets[boss_loc].health <= 0) //Win condition
 		{
@@ -518,8 +518,8 @@ void Battle4 (struct Pet_Array *pa, struct Pet_Lineup *pl)
 			pl->squad[fighter_pos].health = pl->squad[fighter_pos].health - pa->pets[boss_loc].strength; //Enemy deals damage to pet
 			//Displays how much damage the pet did to the enemy
                 	//The print statments are split into two lines for visual appeal when reviewing code
-                	printf("%s%s", pa->pets[boss_loc].pet_name," has dealt ");
-                	printf("%d%s%s\n", pa->pets[boss_loc].strength, " damage to ", pl->squad[fighter_pos].pet_name);
+                	printf("%s has dealt ", pa->pets[boss_loc].pet_name);
+                	printf("%d damage to %s\n", pa->pets[boss_loc].strength, pl->squad[fighter_pos].pet_name);
 		}
 		
 		if (pl->squad[fighter_pos].health <= 0) //Pet Defeat condition
@@ -616,8 +616,8 @@ void Battle5 (struct Pet_Array *pa, struct Pet_Lineup *pl)
 		pa->pets[boss_loc].health = pa->pets[boss_loc].health - pl->squad[fighter_pos].strength; //Pet goes first and deals damage to opponent
 		//Displays how much damage the pet did to the enemy
 		//The print statments are split into two lines for visual appeal when reviewing code
-		printf("\n%s%s", pl->squad[fighter_pos].pet_name," has dealt ");
-		printf("%d%s%s\n", pl->squad[fighter_pos].strength, " damage to ", pa->pets[boss_loc].pet_name);
+		printf("\n%s has dealt ", pl->squad[fighter_pos].pet_name);
+		printf("%d damage to %s\n", pl->squad[fighter_pos].strength, pa->pets[boss_loc].pet_name);
 		
 		if (pa->pets[boss_loc].health <= 0) //Win condition
 		{
@@ -643,8 +643,8 @@ void Battle5 (struct Pet_Array *pa, struct Pet_Lineup *pl)
 			pl->squad[fighter_pos].health = pl->squad[fighter_pos].health - pa->pets[boss_loc].strength; //Enemy deals damage to pet
 			//Displays how much damage the pet did to the enemy
                 	//The print statments are split into two lines for visual appeal when reviewing code
-                	printf("%s%s", pa->pets[boss_loc].pet_name," has dealt ");
-                	printf("%d%s%s\n", pa->pets[boss_loc].strength, " damage to ", pl->squad[fighter_pos].pet_name);
+                	printf("%s has dealt ", pa->pets[boss_loc].pet_name);
+                	printf("%d damage to %s\n", pa->pets[boss_loc].strength, pl->squad[fighter_pos].pet_name);
 		}
 		
 		if (pl->squad[fighter_pos].health <= 0) //Pet Defeat condition
@@ -709,8 +709,8 @@ void Rematch (struct Pet_Array *pa, struct Pet_Lineup *pl)
 		pa->pets[boss_loc].health = pa->pets[boss_loc].health - pl->squad[fighter_pos].strength; //Pet goes first and deals damage to opponent
 		//Displays how much damage the pet did to the enemy
 		//The print statments are split into two lines for visual appeal when reviewing code
-		printf("\n%s%s", pl->squad[fighter_pos].pet_name," has dealt ");
-		printf("%d%s%s\n", pl->squad[fighter_pos].strength, " damage to ", pa->pets[boss_loc].pet_name);
+		printf("\n%s has dealt ", pl->squad[fighter_pos].pet_name);
+		printf("%d damage to %s\n", pl->squad[fighter_pos].strength, pa->pets[boss_loc].pet_name);
 		
 		if (pa->pets[boss_loc].health <= 0) //Win condition
 		{
@@ -738,8 +738,8 @@ void Rematch (struct Pet_Array *pa, struct Pet_Lineup *pl)
 			pl->squad[fighter_pos].health = pl->squad[fighter_pos].health - pa->pets[boss_loc].strength; //Enemy deals damage to pet
 			//Displays how much damage the pet did to the enemy
                 	//The print statments are split into two lines for visual appeal when reviewing code
-                	printf("%s%s", pa->pets[boss_loc].pet_name," has dealt ");
-                	printf("%d%s%s\n", pa->pets[boss_loc].strength, " damage to ", pl->squad[fighter_pos].pet_name);
+                	printf("%s has dealt ", pa->pets[boss_loc].pet_name);
+                	printf("%d damage to %s\n", pa->pets[boss_loc].strength, pl->squad[fighter_pos].pet_name);
 		}
 		
 		if (pl->squad[fighter_pos].health <= 0) //Pet Defeat condition
@@ -767,15 +767,17 @@ void Rematch (struct Pet_Array *pa, struct Pet_Lineup *pl)
 
 void print_Selection (struct Pet_Array *pa, int a, int b, int c)
 {
-	printf("%s%s%s%s%s\n",pa->pets[a].sprite, "\t", pa->pets[b].sprite, "\t", pa->pets[c].sprite); 	
-	printf("%s%d%s%d%s%d\n","🪙",pa->pets[a].cost, "\t🪙",pa->pets[b].cost, "\t🪙", pa->pets[c].cost);
+	printf("%s\t%s\t%s\n",pa->pets[a].sprite, pa->pets[b].sprite, pa->pets[c].sprite); 	
+	printf("🪙%d\t🪙%d\t🪙%d\n",pa->pets[a].cost, pa->pets[b].cost, pa->pets[c].cost);
+	printf("❤️%d\t❤️%d\t❤️%d\n",pa->pets[a].health, pa->pets[b].health, pa->pets[c].health);
+	printf("🗡️%d\t🗡️%d\t🗡️%d\n",pa->pets[a].strength, pa->pets[b].strength, pa->pets[c].strength);
 }
 
 void prompt (int total_coins)
 {
 	printf("Select a pet! Press 1 for the first pet, 2 for the second, and 3 for the third!\n");
 	printf("Or pay a coin by pressing 4 for a reroll!\n\n");
-	printf("%s%d%s\n","Total Coins: 🪙", total_coins, "\n");
+	printf("Total Coins: 🪙%d\n\n", total_coins);
 }
 
 void Choose_Pet(struct Pet_Array *pa, struct Pet_Lineup *pl)
@@ -821,7 +823,7 @@ void Choose_Pet(struct Pet_Array *pa, struct Pet_Lineup *pl)
 			scanf("%d", &input); //Get user input
 			printf("\n");
 		}
-
+	
 		while (input == 1 && total_coins < pa->pets[r1].cost)
 		{
 			printf("Not enough coins!\n");
@@ -877,7 +879,7 @@ void Choose_Pet(struct Pet_Array *pa, struct Pet_Lineup *pl)
 		while (input == 4 && total_coins > 0) //Reroll 
 		{
 			total_coins = total_coins - 1; 
-
+			printf("\nRerolling!\n");
 			if (total_coins <= 0)
 			{
 				Too_poor = true;
