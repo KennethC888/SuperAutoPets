@@ -5,8 +5,7 @@
 #include <stdbool.h>
 #include <lore.h>
 
-
-// Initializing Pet, Pet_Array struct, and Pet_Lineup structs
+// Initializing Pet, Pet_Array struct, Dinh_Army and Pet_Lineup structs
 struct Pet 
 {
 	char* pet_name; 
@@ -35,12 +34,10 @@ struct Dinh_Army
 	struct Pet Pig_Army[5];
 };
 
-
 //Method to add pet to be added to the pet_array
 void add_Pet(struct Pet_Array *ps, struct Pet *p)
 {
 	ps->pets[ps->numPets] = *p; 
-	
 	ps->numPets ++; 
 }
 
@@ -49,8 +46,6 @@ void add_Pig_to_Dinh(struct Dinh_Army *da, struct Pet *p)
 	da->Pig_Army[da->numPets] = *p; 
 	da->numPets ++; 
 }
-
-
 
 void print_Battle (struct Pet_Array *pa, struct Pet_Lineup *pl, int boss_loc)
 {
@@ -100,7 +95,7 @@ void Battle1 (struct Pet_Array *pa, struct Pet_Lineup *pl)
 	char next; // user presses enter to see the next turn of the battle
 	int boss_loc = 0;
 
-	for (int j = 0; j < sizeof(pa->pets); j++)
+	for (int j = 0; j < sizeof(pa->pets); j++) //Searches for Pikachu in boss
 	{
 		if (pa->pets[j].pet_name == "Pikachu")
 		{
@@ -124,7 +119,6 @@ void Battle1 (struct Pet_Array *pa, struct Pet_Lineup *pl)
 				print_Battle(pa, pl, boss_loc);
 				battle = 0;
 				exit(0); //exits the program
-				
 			}
 		}
 
@@ -165,7 +159,6 @@ void Battle1 (struct Pet_Array *pa, struct Pet_Lineup *pl)
 				print_Battle(pa, pl, boss_loc);
 				battle = 0;
 				exit(0); //exits the program
-				
 			}
 		}
 
@@ -173,7 +166,6 @@ void Battle1 (struct Pet_Array *pa, struct Pet_Lineup *pl)
 		printf("\n");
 		print_Battle(pa, pl, boss_loc);
 	}	
-
 }
 
 void Battle2(struct Pet_Array *pa, struct Pet_Lineup *pl, struct Dinh_Army *da)
@@ -224,33 +216,35 @@ void Battle2(struct Pet_Array *pa, struct Pet_Lineup *pl, struct Dinh_Army *da)
 			if (fighter_pos == -1) //If all pets are dead, you lose the battle
 			{
 				printf("YOU LOSE!\n");
-		for (int i = 0; i < 3; i++)
-		{
-			printf("%s\t\t", pl->squad[i].sprite); //Prints the sprites of the selected pets
-		}
+
+				for (int i = 0; i < 3; i++)
+				{
+					printf("%s\t\t", pl->squad[i].sprite); //Prints the sprites of the selected pets
+				}
 		
-		printf("|");
+				printf("|");
 	
-		for (int i = 0; i < 5; i++)
-		{
-			printf("%s\t", da->Pig_Army[i].sprite); //pig sprite
-		}
+				for (int i = 0; i < 5; i++)
+				{
+					printf("%s\t", da->Pig_Army[i].sprite); //pig sprite
+				}
 		
-		printf("\n");
+				printf("\n");
 
-		for (int i = 0; i < 3; i++)
-		{
-			printf("❤️ %d", pl->squad[i].health); //Displays health of the pet in user's army
-			printf(" 🗡️%d", pl->squad[i].strength); //Displays strength of the pet in user's army
-			printf("\t");
-		}
+				for (int i = 0; i < 3; i++)
+				{
+					printf("❤️ %d", pl->squad[i].health); //Displays health of the pet in user's army
+					printf(" 🗡️%d", pl->squad[i].strength); //Displays strength of the pet in user's army
+					printf("\t");
+				}
 
-		for (int i = 0; i < 5; i++)
-		{
-			printf("❤ %d", da->Pig_Army[i].health); //Displays Pig's health
-			printf(" 🗡️%d",da->Pig_Army[i].strength); //Displays Pig's strength
-			printf("\t");
-		}
+				for (int i = 0; i < 5; i++)
+				{
+					printf("❤ %d", da->Pig_Army[i].health); //Displays Pig's health
+					printf(" 🗡️%d",da->Pig_Army[i].strength); //Displays Pig's strength
+					printf("\t");
+				}
+				
 				printf("\n");
 				battle = 0;
 				exit(0);
@@ -281,9 +275,9 @@ void Battle2(struct Pet_Array *pa, struct Pet_Lineup *pl, struct Dinh_Army *da)
 		{
 			pl->squad[fighter_pos].health = pl->squad[fighter_pos].health - da->Pig_Army[enemy_pos].strength; //Enemy deals damage to pet
 			//Displays how much damage the pet did to the enemy
-	        	//The print statments are split into two lines for visual appeal when reviewing code
-       	 		printf("%s has dealt ", da->Pig_Army[enemy_pos].pet_name);
-        		printf("%d damage to %s\n\n", da->Pig_Army[enemy_pos].strength, pl->squad[fighter_pos].pet_name);
+	        //The print statments are split into two lines for visual appeal when reviewing code
+       	 	printf("%s has dealt ", da->Pig_Army[enemy_pos].pet_name);
+        	printf("%d damage to %s\n\n", da->Pig_Army[enemy_pos].strength, pl->squad[fighter_pos].pet_name);
 		}
 		
 		if (pl->squad[fighter_pos].health <= 0) //Pet Defeat condition
@@ -293,36 +287,38 @@ void Battle2(struct Pet_Array *pa, struct Pet_Lineup *pl, struct Dinh_Army *da)
 			pl->squad[fighter_pos].strength = 0;
 			fighter_pos = fighter_pos - 1; // The next pet to the left of the dead pet is the next fighter
 
-			if (fighter_pos == -1) //If all pets are dead, you lose the battle
+		if (fighter_pos == -1) //If all pets are dead, you lose the battle
 			{
 				printf("YOU LOSE!\n");
-		for (int i = 0; i < 3; i++)
-		{
-			printf("%s\t\t", pl->squad[i].sprite); //Prints the sprites of the selected pets
-		}
+
+				for (int i = 0; i < 3; i++)
+				{
+					printf("%s\t\t", pl->squad[i].sprite); //Prints the sprites of the selected pets
+				}
 		
-		printf("|");
+				printf("|");
 	
-		for (int i = 0; i < 5; i++)
-		{
-			printf("%s\t", da->Pig_Army[i].sprite); //pig sprite
-		}
+				for (int i = 0; i < 5; i++)
+				{
+					printf("%s\t", da->Pig_Army[i].sprite); //pig sprite
+				}
 		
-		printf("\n");
+				printf("\n");
 
-		for (int i = 0; i < 3; i++)
-		{
-			printf("❤️ %d", pl->squad[i].health); //Displays health of the pet in user's army
-			printf(" 🗡️%d", pl->squad[i].strength); //Displays strength of the pet in user's army
-			printf("\t");
-		}
+				for (int i = 0; i < 3; i++)
+				{
+					printf("❤️ %d", pl->squad[i].health); //Displays health of the pet in user's army
+					printf(" 🗡️%d", pl->squad[i].strength); //Displays strength of the pet in user's army
+					printf("\t");
+				}
 
-		for (int i = 0; i < 5; i++)
-		{
-			printf("❤ %d", da->Pig_Army[i].health); //Displays Pig's health
-			printf(" 🗡️%d",da->Pig_Army[i].strength); //Displays Pig's strength
-			printf("\t");
-		}
+				for (int i = 0; i < 5; i++)
+				{
+					printf("❤ %d", da->Pig_Army[i].health); //Displays Pig's health
+					printf(" 🗡️%d",da->Pig_Army[i].strength); //Displays Pig's strength
+					printf("\t");
+				}	
+
 				printf("\n");
 				battle = 0;
 				exit(0);
@@ -374,7 +370,7 @@ void Battle3 (struct Pet_Array *pa, struct Pet_Lineup *pl)
 
 	for (int j = 0; j < sizeof(pa->pets); j++)
 	{
-		if (pa->pets[j].pet_name == "Ohm Aggy-Poo")
+		if (pa->pets[j].pet_name == "Ohm Aggy-Poo") //Searches for Boss Ohm Aggy-Poo
 		{
 			boss_loc = j;
 			j = 10000;  
@@ -396,7 +392,6 @@ void Battle3 (struct Pet_Array *pa, struct Pet_Lineup *pl)
 				print_Battle(pa, pl, boss_loc);
 				battle = 0;
 				exit(0); //exits the program
-				
 			}
 		}
 
@@ -665,7 +660,6 @@ void Battle5 (struct Pet_Array *pa, struct Pet_Lineup *pl)
 		printf("\n");
 		print_Battle(pa, pl, boss_loc); 
 	}	
-
 }
 
 void Rematch (struct Pet_Array *pa, struct Pet_Lineup *pl)
@@ -701,8 +695,7 @@ void Rematch (struct Pet_Array *pa, struct Pet_Lineup *pl)
 				printf("\nYOU LOSE!\n");
 				print_Battle(pa, pl, boss_loc);
 				battle = 0;
-				exit(0); //exits the program
-				
+				exit(0); //exits the program	
 			}
 		}
 
@@ -759,10 +752,8 @@ void Rematch (struct Pet_Array *pa, struct Pet_Lineup *pl)
 
 		turn ++; //Keeps track of how many turns occured in the battle
 		printf("\n");
-		
 		print_Battle(pa, pl, boss_loc); 
 	}	
-
 }
 
 void print_Selection (struct Pet_Array *pa, int a, int b, int c)
@@ -788,7 +779,7 @@ void Choose_Pet(struct Pet_Array *pa, struct Pet_Lineup *pl)
 	int r1 = 1000;
 	int r2 = 1000;
 	int r3 = 1000;
-    int input = 0;	
+	char input = '0';	
 	srand(time(NULL)); //Used for the random generator
 
 	for (int i = 0; i < 3; i++)
@@ -813,45 +804,42 @@ void Choose_Pet(struct Pet_Array *pa, struct Pet_Lineup *pl)
 		}
 	
 		print_Selection(pa, r1, r2, r3); 
-		scanf("%d", &input); //Get user input
+		scanf("%c", &input); //Get user input
 		printf("\n");
-
-		while (input != 1 && input != 2 && input != 3 && input != 4)
+		
+		while (input != '1' && input != '2' && input != '3' && input != '4')
 		{
-			prompt(total_coins);
-			print_Selection(pa, r1, r2, r3);
-			scanf("%d", &input); //Get user input
-			printf("\n");
+			scanf("%c", &input); //Get user input
 		}
 	
-		while (input == 1 && total_coins < pa->pets[r1].cost)
+		while (input == '1' && total_coins < pa->pets[r1].cost)
 		{
 			printf("Not enough coins!\n");
 			prompt(total_coins);
 			print_Selection(pa, r1, r2, r3);
-			scanf("%d", &input); //Get user input
+			scanf("%c", &input); //Get user input
 			printf("\n");
 		}
 
-		while (input == 2 && total_coins < pa->pets[r2].cost)
+		while (input == '2' && total_coins < pa->pets[r2].cost)
 		{
 			printf("Not enough coins!\n");
 			prompt(total_coins);
 			print_Selection(pa, r1, r2, r3);
-			scanf("%d", &input); //Get user input
+			scanf("%c", &input); //Get user input
 			printf("\n");
 		}
 
-		while (input == 3 && total_coins < pa->pets[r3].cost)
+		while (input == '3' && total_coins < pa->pets[r3].cost)
 		{
 			printf("Not enough coins!\n");
 			prompt(total_coins);
 			print_Selection(pa, r1, r2, r3);
-			scanf("%d", &input); //Get user input
+			scanf("%c", &input); //Get user input
 			printf("\n"); 
 		}
 
-		if (input == 1)
+		if (input == '1')
 		{	
 			// Load all selected pet's info into the array of pets that will be used to battle
 			pl->squad[pl->numPets] = pa->pets[r1];
@@ -860,7 +848,7 @@ void Choose_Pet(struct Pet_Array *pa, struct Pet_Lineup *pl)
 			pl->numPets ++;
 		}
 
-		else if (input == 2)
+		else if (input == '2')
 		{
 			pl->squad[pl->numPets] = pa->pets[r2];
 
@@ -868,7 +856,7 @@ void Choose_Pet(struct Pet_Array *pa, struct Pet_Lineup *pl)
 			pl->numPets ++;
 		}
 
-		else if (input == 3)
+		else if (input == '3')
 		{
 			pl->squad[pl->numPets] = pa->pets[r3];
 
@@ -876,7 +864,7 @@ void Choose_Pet(struct Pet_Array *pa, struct Pet_Lineup *pl)
 			pl->numPets ++;
 		}
 
-		while (input == 4 && total_coins > 0) //Reroll 
+		while (input == '4' && total_coins > 0) //Reroll 
 		{
 			total_coins = total_coins - 1; 
 			printf("\nRerolling!\n");
@@ -902,27 +890,24 @@ void Choose_Pet(struct Pet_Array *pa, struct Pet_Lineup *pl)
 			}
 
 			print_Selection(pa, r1, r2, r3);
-			scanf("%d", &input); //Get user input
+			scanf("%s", &input); //Get user input
 			printf("\n");
 
-			while (input != 1 && input != 2 && input != 3 && input != 4)
+			while (input != '1' && input != '2' && input != '3' && input != '4')
 			{
-				prompt(total_coins);
-				print_Selection(pa, r1, r2, r3);
-				scanf("%d", &input); //Get user input
-				printf("\n");
+				scanf("%s", &input); //Get user input
 			}
 
-			while ((input == 1 && total_coins < pa->pets[r1].cost) || (input == 2 && total_coins <pa->pets[r2].cost) || (input == 3 && total_coins < pa-> pets[r3].cost))
+			while ((input == '1' && total_coins < pa->pets[r1].cost) || (input == '2' && total_coins <pa->pets[r2].cost) || (input == '3' && total_coins < pa-> pets[r3].cost))
 			{
 				printf("Not enough coins!\n");
 				prompt(total_coins);
 				print_Selection(pa, r1, r2, r3);
-				scanf("%d", &input); //Get user input
+				scanf("%s", &input); //Get user input
 				printf("\n");
 			}
 
-			if (input == 1)
+			if (input == '1')
 			{	
 				// Load all selected pet's info into the array of pets that will be used to battle
 				pl->squad[pl->numPets] = pa->pets[r1];
@@ -931,7 +916,7 @@ void Choose_Pet(struct Pet_Array *pa, struct Pet_Lineup *pl)
 				pl->numPets ++;
 			}
 
-			else if (input == 2)
+			else if (input == '2')
 			{
 				pl->squad[pl->numPets] = pa->pets[r2];
 
@@ -939,14 +924,13 @@ void Choose_Pet(struct Pet_Array *pa, struct Pet_Lineup *pl)
 				pl->numPets ++;
 			}
 
-			else if (input == 3)
+			else if (input == '3')
 			{
 				pl->squad[pl->numPets] = pa->pets[r3];
 
 				total_coins = total_coins - pa->pets[r3].cost; 
 				pl->numPets ++;
 			}
-			
 		}		
 	}
 	system("clear");
