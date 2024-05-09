@@ -275,9 +275,9 @@ void Battle2(struct Pet_Array *pa, struct Pet_Lineup *pl, struct Dinh_Army *da)
 		{
 			pl->squad[fighter_pos].health = pl->squad[fighter_pos].health - da->Pig_Army[enemy_pos].strength; //Enemy deals damage to pet
 			//Displays how much damage the pet did to the enemy
-	        //The print statments are split into two lines for visual appeal when reviewing code
-       	 	printf("%s has dealt ", da->Pig_Army[enemy_pos].pet_name);
-        	printf("%d damage to %s\n\n", da->Pig_Army[enemy_pos].strength, pl->squad[fighter_pos].pet_name);
+	        	//The print statments are split into two lines for visual appeal when reviewing code
+       	 		printf("%s has dealt ", da->Pig_Army[enemy_pos].pet_name);
+        		printf("%d damage to %s\n\n", da->Pig_Army[enemy_pos].strength, pl->squad[fighter_pos].pet_name);
 		}
 		
 		if (pl->squad[fighter_pos].health <= 0) //Pet Defeat condition
