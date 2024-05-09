@@ -37,25 +37,16 @@ struct Dinh_Army
 
 
 //Method to add pet to be added to the pet_array
-void add_Pet(struct Pet_Array *ps, struct Pet p)
+void add_Pet(struct Pet_Array *ps, struct Pet *p)
 {
-	ps->pets[ps->numPets].pet_name = p.pet_name; 
-	ps->pets[ps->numPets].sprite = p.sprite;
-	ps->pets[ps->numPets].special = p.special;
-	ps->pets[ps->numPets].strength = p.strength;
-	ps->pets[ps->numPets].health = p.health;
-	ps->pets[ps->numPets].cost = p.cost;
+	ps->pets[ps->numPets] = *p; 
+	
 	ps->numPets ++; 
 }
 
-void add_Pig_to_Dinh(struct Dinh_Army *da, struct Pet p)
+void add_Pig_to_Dinh(struct Dinh_Army *da, struct Pet *p)
 {
-	da->Pig_Army[da->numPets].pet_name = p.pet_name; 
-	da->Pig_Army[da->numPets].sprite = p.sprite;
-	da->Pig_Army[da->numPets].special = p.special;
-	da->Pig_Army[da->numPets].strength = p.strength;
-	da->Pig_Army[da->numPets].health = p.health;
-	da->Pig_Army[da->numPets].cost = p.cost;
+	da->Pig_Army[da->numPets] = *p; 
 	da->numPets ++; 
 }
 
@@ -861,36 +852,24 @@ void Choose_Pet(struct Pet_Array *pa, struct Pet_Lineup *pl)
 		if (input == 1)
 		{	
 			// Load all selected pet's info into the array of pets that will be used to battle
-			pl->squad[pl->numPets].pet_name = pa->pets[r1].pet_name;
-			pl->squad[pl->numPets].sprite = pa->pets[r1].sprite;
-			pl->squad[pl->numPets].special = pa->pets[r1].special;
-			pl->squad[pl->numPets].strength = pa->pets[r1].strength;
-			pl->squad[pl->numPets].health = pa->pets[r1].health;
-			pl->squad[pl->numPets].cost = pa->pets[r1].cost;
+			pl->squad[pl->numPets] = pa->pets[r1];
+			
 			total_coins = total_coins - pa->pets[r1].cost; 
 			pl->numPets ++;
 		}
 
 		else if (input == 2)
 		{
-			pl->squad[pl->numPets].pet_name = pa->pets[r2].pet_name;
-			pl->squad[pl->numPets].sprite = pa->pets[r2].sprite;
-			pl->squad[pl->numPets].special = pa->pets[r2].special;
-			pl->squad[pl->numPets].strength = pa->pets[r2].strength;
-			pl->squad[pl->numPets].health = pa->pets[r2].health;
-			pl->squad[pl->numPets].cost = pa->pets[r2].cost;
+			pl->squad[pl->numPets] = pa->pets[r2];
+
 			total_coins = total_coins - pa->pets[r2].cost; 
 			pl->numPets ++;
 		}
 
 		else if (input == 3)
 		{
-			pl->squad[pl->numPets].pet_name = pa->pets[r3].pet_name;
-			pl->squad[pl->numPets].sprite = pa->pets[r3].sprite;
-			pl->squad[pl->numPets].special = pa->pets[r3].special;
-			pl->squad[pl->numPets].strength = pa->pets[r3].strength;
-			pl->squad[pl->numPets].health = pa->pets[r3].health;
-			pl->squad[pl->numPets].cost = pa->pets[r3].cost;
+			pl->squad[pl->numPets] = pa->pets[r3];
+
 			total_coins = total_coins - pa->pets[r3].cost; 
 			pl->numPets ++;
 		}
@@ -944,36 +923,24 @@ void Choose_Pet(struct Pet_Array *pa, struct Pet_Lineup *pl)
 			if (input == 1)
 			{	
 				// Load all selected pet's info into the array of pets that will be used to battle
-				pl->squad[pl->numPets].pet_name = pa->pets[r1].pet_name;
-				pl->squad[pl->numPets].sprite = pa->pets[r1].sprite;
-				pl->squad[pl->numPets].special = pa->pets[r1].special;
-				pl->squad[pl->numPets].strength = pa->pets[r1].strength;
-				pl->squad[pl->numPets].health = pa->pets[r1].health;
-				pl->squad[pl->numPets].cost = pa->pets[r1].cost;
+				pl->squad[pl->numPets] = pa->pets[r1];
+
 				total_coins = total_coins - pa->pets[r1].cost; 
 				pl->numPets ++;
 			}
 
 			else if (input == 2)
 			{
-				pl->squad[pl->numPets].pet_name = pa->pets[r2].pet_name;
-				pl->squad[pl->numPets].sprite = pa->pets[r2].sprite;
-				pl->squad[pl->numPets].special = pa->pets[r2].special;
-				pl->squad[pl->numPets].strength = pa->pets[r2].strength;
-				pl->squad[pl->numPets].health = pa->pets[r2].health;
-				pl->squad[pl->numPets].cost = pa->pets[r2].cost;
+				pl->squad[pl->numPets] = pa->pets[r2];
+
 				total_coins = total_coins - pa->pets[r2].cost; 
 				pl->numPets ++;
 			}
 
 			else if (input == 3)
 			{
-				pl->squad[pl->numPets].pet_name = pa->pets[r3].pet_name;
-				pl->squad[pl->numPets].sprite = pa->pets[r3].sprite;
-				pl->squad[pl->numPets].special = pa->pets[r3].special;
-				pl->squad[pl->numPets].strength = pa->pets[r3].strength;
-				pl->squad[pl->numPets].health = pa->pets[r3].health;
-				pl->squad[pl->numPets].cost = pa->pets[r3].cost;
+				pl->squad[pl->numPets] = pa->pets[r3];
+
 				total_coins = total_coins - pa->pets[r3].cost; 
 				pl->numPets ++;
 			}
@@ -1020,34 +987,34 @@ int main()
 	//Adds 5 pigs to Dinh's Army which will be used in Battle 2
 	for (int i = 0; i < 5; i++)
 	{
-		add_Pig_to_Dinh(&Piggies, Pig);
+		add_Pig_to_Dinh(&Piggies, &Pig);
 	}
 
 	//Adding pets to array
-	add_Pet(&select, Rabbit);
-	add_Pet(&select, Mouse);
-	add_Pet(&select, Turtle);
-	add_Pet(&select, Snake);
-	add_Pet(&select, Fish);
-	add_Pet(&select, Dog);
-	add_Pet(&select, Cat);
-	add_Pet(&select, Horse);
-	add_Pet(&select, Dragon);
-	add_Pet(&select, Whale);
-	add_Pet(&select, Rooster);
-	add_Pet(&select, Elephant);
-	add_Pet(&select, Shark);
-	add_Pet(&select, Bison);
-	add_Pet(&select, Gorilla);
-	add_Pet(&select, Snail);
-	add_Pet(&select, Chick);
-	add_Pet(&select, Dolphin);
-	add_Pet(&select, Eagle);
-	add_Pet(&select, Pig);
-	add_Pet(&select, Pikachu);
-	add_Pet(&select, Robin_SaRIZZky);
-	add_Pet(&select, Ohm_Aggy_Poo);
-	add_Pet(&select, Finchev);  
+	add_Pet(&select, &Rabbit);
+	add_Pet(&select, &Mouse);
+	add_Pet(&select, &Turtle);
+	add_Pet(&select, &Snake);
+	add_Pet(&select, &Fish);
+	add_Pet(&select, &Dog);
+	add_Pet(&select, &Cat);
+	add_Pet(&select, &Horse);
+	add_Pet(&select, &Dragon);
+	add_Pet(&select, &Whale);
+	add_Pet(&select, &Rooster);
+	add_Pet(&select, &Elephant);
+	add_Pet(&select, &Shark);
+	add_Pet(&select, &Bison);
+	add_Pet(&select, &Gorilla);
+	add_Pet(&select, &Snail);
+	add_Pet(&select, &Chick);
+	add_Pet(&select, &Dolphin);
+	add_Pet(&select, &Eagle);
+	add_Pet(&select, &Pig);
+	add_Pet(&select, &Pikachu);
+	add_Pet(&select, &Robin_SaRIZZky);
+	add_Pet(&select, &Ohm_Aggy_Poo);
+	add_Pet(&select, &Finchev);  
 
 	Lore1(); //Prints Lore
 	Choose_Pet(&select, &lineup); //User chooses the pets to fight the battle
