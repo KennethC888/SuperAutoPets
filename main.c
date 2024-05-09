@@ -275,9 +275,9 @@ void Battle2(struct Pet_Array *pa, struct Pet_Lineup *pl, struct Dinh_Army *da)
 		{
 			pl->squad[fighter_pos].health = pl->squad[fighter_pos].health - da->Pig_Army[enemy_pos].strength; //Enemy deals damage to pet
 			//Displays how much damage the pet did to the enemy
-	        //The print statments are split into two lines for visual appeal when reviewing code
-       	 	printf("%s has dealt ", da->Pig_Army[enemy_pos].pet_name);
-        	printf("%d damage to %s\n\n", da->Pig_Army[enemy_pos].strength, pl->squad[fighter_pos].pet_name);
+	        	//The print statments are split into two lines for visual appeal when reviewing code
+       	 		printf("%s has dealt ", da->Pig_Army[enemy_pos].pet_name);
+        		printf("%d damage to %s\n\n", da->Pig_Army[enemy_pos].strength, pl->squad[fighter_pos].pet_name);
 		}
 		
 		if (pl->squad[fighter_pos].health <= 0) //Pet Defeat condition
@@ -505,7 +505,7 @@ void Battle4 (struct Pet_Array *pa, struct Pet_Lineup *pl)
 			pa->pets[boss_loc].health = pa->pets[boss_loc].health + 3; 
 			printf("%s\n", "Robin SaRIZZky used RIZZ!"); 
 			printf("%s", "This attack deals 5 damage to ");
-            printf("%s%s\n", pl->squad[fighter_pos].pet_name, " and heals Robin SaRIZZky 3 health!");	
+            		printf("%s%s\n", pl->squad[fighter_pos].pet_name, " and heals Robin SaRIZZky 3 health!");	
 		} 
 
 		else
@@ -535,10 +535,8 @@ void Battle4 (struct Pet_Array *pa, struct Pet_Lineup *pl)
 
 		turn ++; //Keeps track of how many turns occured in the battle
 		printf("\n");
-		
 		print_Battle(pa, pl, boss_loc); 
 	}	
-
 }
 
 void condescend()
@@ -630,7 +628,7 @@ void Battle5 (struct Pet_Array *pa, struct Pet_Lineup *pl)
 			printf("%s\n", "Finchev used Condescend!"); 
 			condescend(); 
 			printf("%s", "This attack deals an additional 10 damage to ");
-            printf("%s%s\n", pl->squad[fighter_pos].pet_name, " and heals Finchev 2 health!");
+            		printf("%s%s\n", pl->squad[fighter_pos].pet_name, " and heals Finchev 2 health!");
 		} 
 
 		else
@@ -721,9 +719,9 @@ void Rematch (struct Pet_Array *pa, struct Pet_Lineup *pl)
 			printf("%s\n", "Finchev used Condescend!"); 
 			condescend(); 
 			printf("%s", "This attack deals an additional 10 damage to ");
-            printf("%s%s\n", pl->squad[fighter_pos].pet_name, " and heals Finchev 2 health!");
+            		printf("%s%s\n", pl->squad[fighter_pos].pet_name, " and heals Finchev 2 health!");
 			printf("%s\n", "But with MENTAL FORTITUDE, Condescend deals 0 damage!");
-		    printf("%s%d%s\n", "This attack dealt ", pa->pets[boss_loc].strength, " damage");
+		   	printf("%s%d%s\n", "This attack dealt ", pa->pets[boss_loc].strength, " damage");
 		} 
 
 		else
@@ -788,6 +786,7 @@ void Choose_Pet(struct Pet_Array *pa, struct Pet_Lineup *pl)
 		{
 			break;
 		}
+		
 		prompt(total_coins);
 		r1 = rand()%(pa->numPets - 5);
 		r2 = rand()%(pa->numPets - 5);
@@ -843,7 +842,6 @@ void Choose_Pet(struct Pet_Array *pa, struct Pet_Lineup *pl)
 		{	
 			// Load all selected pet's info into the array of pets that will be used to battle
 			pl->squad[pl->numPets] = pa->pets[r1];
-			
 			total_coins = total_coins - pa->pets[r1].cost; 
 			pl->numPets ++;
 		}
@@ -851,7 +849,6 @@ void Choose_Pet(struct Pet_Array *pa, struct Pet_Lineup *pl)
 		else if (input == '2')
 		{
 			pl->squad[pl->numPets] = pa->pets[r2];
-
 			total_coins = total_coins - pa->pets[r2].cost; 
 			pl->numPets ++;
 		}
@@ -859,7 +856,6 @@ void Choose_Pet(struct Pet_Array *pa, struct Pet_Lineup *pl)
 		else if (input == '3')
 		{
 			pl->squad[pl->numPets] = pa->pets[r3];
-
 			total_coins = total_coins - pa->pets[r3].cost; 
 			pl->numPets ++;
 		}
@@ -911,7 +907,6 @@ void Choose_Pet(struct Pet_Array *pa, struct Pet_Lineup *pl)
 			{	
 				// Load all selected pet's info into the array of pets that will be used to battle
 				pl->squad[pl->numPets] = pa->pets[r1];
-
 				total_coins = total_coins - pa->pets[r1].cost; 
 				pl->numPets ++;
 			}
@@ -919,7 +914,6 @@ void Choose_Pet(struct Pet_Array *pa, struct Pet_Lineup *pl)
 			else if (input == '2')
 			{
 				pl->squad[pl->numPets] = pa->pets[r2];
-
 				total_coins = total_coins - pa->pets[r2].cost; 
 				pl->numPets ++;
 			}
@@ -927,7 +921,6 @@ void Choose_Pet(struct Pet_Array *pa, struct Pet_Lineup *pl)
 			else if (input == '3')
 			{
 				pl->squad[pl->numPets] = pa->pets[r3];
-
 				total_coins = total_coins - pa->pets[r3].cost; 
 				pl->numPets ++;
 			}
@@ -940,7 +933,7 @@ int main()
 {
 	//Instantiating pets and their stats along with their bosses
 	struct Pet Rabbit = {"Rabbit", "🐇", "Evasive Dodge", 2, 4, 3}; 
-    struct Pet Mouse = {"Mouse", "🐁", "Squeak Squeak", 1, 5, 2}; 
+    	struct Pet Mouse = {"Mouse", "🐁", "Squeak Squeak", 1, 5, 2}; 
 	struct Pet Turtle = {"Turtle", "🐢","Shell Protection", 1, 7, 3};
 	struct Pet Snake = {"Snake", "🐍", "Poison Fang", 2, 6, 3}; 
 	struct Pet Fish = {"Fish", "🐟", "Flop", 1, 1, 1}; 
